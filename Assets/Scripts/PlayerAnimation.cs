@@ -38,6 +38,7 @@ public class PlayerAnimation : MonoBehaviour
                 {
                     return;
                 }
+
                 else if (anim.GetBool("shot") == false)
                 {
                     anim.SetBool("run", true);
@@ -47,12 +48,14 @@ public class PlayerAnimation : MonoBehaviour
                     moveDir = transform.TransformDirection(moveDir);
                 }
             }
+
             if (Input.GetKeyUp(KeyCode.W))
             {
                 anim.SetBool("run", false);
                 anim.SetInteger("condition", 0);
                 moveDir = new Vector3(0, 0, 0);
             }
+
             rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
             transform.eulerAngles = new Vector3(0, rot, 0);
             moveDir.y -= gravity * Time.deltaTime;
